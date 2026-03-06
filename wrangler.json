@@ -1,6 +1,7 @@
 {
-"name": "vibe-j2team-dev",
-  "pages": {
-    "build_output_dir": "dist"
+  "name": "vibe-j2team-dev",
+  "compatibility_date": "2026-03-06",
+  "assets": {
+    "directory": "./dist"
   }
 }
