@@ -10,6 +10,7 @@ declare module 'vue-router' {
 }
 
 const HomePage = () => import('@/views/HomePage.vue')
+const ContentPolicy = () => import('@/views/ContentPolicy.vue')
 const NotFound = () => import('@/views/NotFound.vue')
 
 const DEFAULT_TITLE = 'vibe.j2team.org - J2TEAM Community Vibe Coding'
@@ -46,6 +47,15 @@ const router = createRouter({
       },
     },
     ...pageRoutes,
+    {
+      path: '/content-policy',
+      name: 'content-policy',
+      component: ContentPolicy,
+      meta: {
+        title: 'Chính sách nội dung - vibe.j2team.org',
+        description: 'Chính sách nội dung cho các trang con trên vibe.j2team.org.',
+      },
+    },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',

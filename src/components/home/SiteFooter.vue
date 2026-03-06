@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+</script>
+
 <template>
   <footer class="border-t-2 border-accent-coral py-8 text-center">
     <p class="text-sm text-text-dim font-display tracking-wide">
@@ -11,6 +15,11 @@
       >
         J2TEAM Community
       </a>
+    </p>
+    <p class="mt-3 text-xs text-text-dim">
+      <RouterLink to="/content-policy" class="text-text-dim hover:text-text-secondary transition-colors link-underline">
+        Chính sách nội dung
+      </RouterLink>
     </p>
   </footer>
 </template>
