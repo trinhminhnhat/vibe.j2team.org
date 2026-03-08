@@ -98,8 +98,7 @@ import { REPO_URL } from '@/data/constants'
     rgba(255, 255, 255, 0.2) 55%,
     transparent 60%
   );
-  animation: shimmer 3s ease-in-out infinite;
-  animation-delay: 2s;
+  animation: shimmer 3s ease-in-out 2s infinite backwards;
   pointer-events: none;
 }
 </style>
