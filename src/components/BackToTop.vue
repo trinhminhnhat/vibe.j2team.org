@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { Icon } from '@iconify/vue'
 
 const visible = ref(false)
 
@@ -29,7 +30,7 @@ onUnmounted(() => {
       aria-label="Về đầu trang"
       @click="scrollToTop"
     >
-      ↑
+      <Icon icon="lucide:arrow-up" class="w-5 h-5" />
     </button>
   </Transition>
 </template>
