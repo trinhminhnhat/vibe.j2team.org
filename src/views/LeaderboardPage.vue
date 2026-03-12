@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { multiAppAuthors } from '@/data/leaderboard'
+import { multiAppAuthors, toAuthorSlug } from '@/data/authors'
 import { getCategoryLabel } from '@/data/categories'
-import { toAuthorSlug } from '@/data/authors'
 
 interface RankStyle {
   card: string
@@ -48,9 +47,16 @@ const styledAuthors = multiAppAuthors.map((stat) => ({
 <template>
   <div class="min-h-screen bg-bg-deep text-text-primary font-body">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <RouterLink
+        to="/"
+        class="inline-flex items-center gap-2 text-sm text-text-secondary transition hover:text-accent-coral"
+      >
+        &larr; Về trang chủ
+      </RouterLink>
+
       <!-- Header -->
       <h1
-        class="font-display text-3xl sm:text-4xl font-bold text-text-primary flex items-center gap-3"
+        class="mt-8 font-display text-3xl sm:text-4xl font-bold text-text-primary flex items-center gap-3"
       >
         <span class="text-accent-coral font-display text-sm tracking-widest">//</span>
         Bảng xếp hạng tác giả
