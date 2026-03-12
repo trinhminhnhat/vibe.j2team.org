@@ -33,7 +33,7 @@ const rankStyles: Record<number, RankStyle> = {
 
 const defaultStyle: RankStyle = {
   card: 'border-border-default hover:border-border-hover',
-  badge: 'bg-bg-elevated',
+  badge: 'bg-text-dim',
   text: 'text-text-primary',
   hover: 'hover:text-accent-coral',
 }
@@ -116,7 +116,7 @@ const styledAuthors = multiAppAuthors.map((stat) => ({
             <span
               v-for="cat in stat.categories"
               :key="cat"
-              class="text-[10px] px-1.5 py-0.5 bg-bg-elevated text-text-dim font-display tracking-wide"
+              class="text-[10px] px-1.5 py-0.5 bg-bg-elevated text-text-dim font-display tracking-wide border border-border-default"
             >
               {{ getCategoryLabel(cat) }}
             </span>
