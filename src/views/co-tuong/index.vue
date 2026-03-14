@@ -70,6 +70,11 @@ function resetGame() {
   winner.value = null
 }
 
+function handleNewGame() {
+  resetGame()
+  nextTick(drawBoard)
+}
+
 function handleCanvasClick(e: MouseEvent | TouchEvent) {
   if (gameOver.value || aiThinking.value) return
   if (gameMode.value === 'spectator') return
@@ -700,14 +705,7 @@ watch(
                 />
                 <span class="text-xs">Đầu hàng</span>
               </button>
-              <button
-                v-if="gameOver"
-                class="ancient-btn-sm text-[#C8A96E]"
-                @click="
-                  resetGame()
-                  nextTick(drawBoard)
-                "
-              >
+              <button v-if="gameOver" class="ancient-btn-sm text-[#C8A96E]" @click="handleNewGame">
                 <svg
                   class="w-4 h-4"
                   viewBox="0 0 24 24"
