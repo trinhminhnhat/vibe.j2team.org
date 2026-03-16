@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-vibe.j2team.org — A collaborative vibe coding project by J2TEAM Community with 125+ sub-apps. The homepage acts as a launcher linking to sub-apps, where each community member creates their own page.
+vibe.j2team.org — A collaborative vibe coding project by J2TEAM Community with 160+ sub-apps. The homepage acts as a launcher linking to sub-apps, where each community member creates their own page.
 
 ## Tech Stack
 
