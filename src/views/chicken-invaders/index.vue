@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import { GAME_WIDTH, GAME_HEIGHT, WEAPON_TYPES } from './config'
 import { useGame } from './useGame'
 
-const router = useRouter()
 const {
   gameState,
   gamePhase,
@@ -144,13 +143,13 @@ const getTailwindColor = (colorClass: string) => {
         >
           {{ gameState === 'paused' || gameState === 'resuming' ? '▶' : '⏸' }}
         </button>
-        <button
-          @click="router.push('/')"
+        <RouterLink
+          to="/"
           class="px-2 lg:px-5 py-1 lg:py-2 font-display font-semibold text-[10px] lg:text-sm bg-bg-elevated border border-border-default text-text-secondary transition-all hover:border-accent-coral hover:text-text-primary"
         >
           <span class="hidden lg:inline">&larr; THOÁT</span>
           <span class="lg:hidden text-sm">&larr;</span>
-        </button>
+        </RouterLink>
       </div>
     </div>
 

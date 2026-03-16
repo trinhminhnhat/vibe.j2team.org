@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { useClipboard, useTimeoutFn } from '@vueuse/core'
 import { Icon } from '@iconify/vue'
 import { REPO_URL } from '@/data/constants'
@@ -64,10 +64,6 @@ function handleFavorite() {
     isAnimating.value = true
     startAnimatingTimer()
   }
-}
-
-function goHome() {
-  router.push('/')
 }
 
 function dismiss() {
@@ -179,10 +175,10 @@ function reportIssue() {
         </button>
 
         <!-- Home -->
-        <button class="toolbar-btn group" title="Về trang chủ" @click="goHome">
+        <RouterLink to="/" class="toolbar-btn group" title="Về trang chủ">
           <Icon icon="lucide:home" class="w-5 h-5" />
           <span class="toolbar-label font-display tracking-wide">Trang chủ</span>
-        </button>
+        </RouterLink>
 
         <!-- Random page -->
         <button class="toolbar-btn group" title="Xem trang ngẫu nhiên" @click="goToRandom">

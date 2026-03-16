@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, defineAsyncComponent } from 'vue'
-import { useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import type { CategoryId } from '@/data/categories'
 import type { AppItem } from './composables/useApps'
 import { usePagesLoader } from './composables/usePagesLoader'
@@ -226,7 +226,7 @@ const visiblePages = computed(() => {
       </main>
 
       <footer class="jvibeos-footer">
-        <a href="/" class="home-btn">Về trang chủ</a>
+        <RouterLink to="/" class="home-btn">Về trang chủ</RouterLink>
         <span class="footer-text"
           ><span
             >Parody version of

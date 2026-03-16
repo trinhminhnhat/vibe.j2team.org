@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import frameFunny from './images/khung-anh-funy.png'
 // --- Cấu hình Khung Mặc Định ---
@@ -25,11 +26,6 @@ const errorMessage = ref('')
 function resetPhotobooth() {
   mergedPreview.value = ''
   lastCapturedPhoto.value = ''
-}
-
-// --- Điều hướng ---
-function goToHome() {
-  window.location.href = '/'
 }
 
 // --- Camera Logic ---
@@ -147,13 +143,13 @@ onBeforeUnmount(() => {
   <div class="min-h-screen bg-slate-950 p-4 font-sans text-slate-200 md:p-8">
     <div class="mx-auto max-w-6xl">
       <header class="mb-10 relative">
-        <button
-          @click="goToHome"
+        <RouterLink
+          to="/"
           class="absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-slate-400 hover:bg-slate-800 hover:text-orange-500 transition-all cursor-pointer border border-slate-800 group"
         >
           <Icon icon="lucide:home" class="size-4 group-hover:scale-110 transition-transform" />
           <span class="hidden sm:inline">TRANG CHỦ</span>
-        </button>
+        </RouterLink>
 
         <div class="text-center">
           <h1 class="text-4xl font-black italic tracking-tighter text-orange-500 uppercase">
