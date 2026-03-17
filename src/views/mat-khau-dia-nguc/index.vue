@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 import { useClipboard } from '@vueuse/core'
 import { getValidRules } from './rules'
 import type { RuleWithStatus } from './types'
-import logoUrl from './svg/logo.svg'
+const logoUrl = '/images/web-logo.svg'
 
 const password = ref('')
 const gameStarted = ref(false)

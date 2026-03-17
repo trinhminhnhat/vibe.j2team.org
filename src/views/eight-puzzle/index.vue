@@ -2,7 +2,7 @@
 import { computed, nextTick, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useEventListener, useIntervalFn, useLocalStorage } from '@vueuse/core'
-import logoUrl from './svg/logo.svg'
+const logoUrl = '/images/web-logo.svg'
 import {
   canMoveTile,
   createSolvedBoard,
