@@ -1,4 +1,3 @@
-import { toPng } from 'html-to-image'
 import { ref } from 'vue'
 import type { TripPlan } from '../types'
 
@@ -10,6 +9,7 @@ export function useShare() {
     if (exporting.value) return
     exporting.value = true
     try {
+      const { toPng } = await import('html-to-image')
       const dataUrl = await toPng(el, {
         backgroundColor: '#0F1923',
         pixelRatio: 2,
