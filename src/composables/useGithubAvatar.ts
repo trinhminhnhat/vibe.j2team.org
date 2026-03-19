@@ -39,6 +39,32 @@ function hashColor(author: string): string {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length]!
 }
 
+const initialAvatarCache = new Map<string, string>()
+
+/**
+ * Generate a data-URL avatar with the author's initial on a colored background.
+ * Uses an OffscreenCanvas (or regular canvas) and caches results.
+ */
+export function generateInitialAvatar(author: string, size = 200): string {
+  const cached = initialAvatarCache.get(author)
+  if (cached) return cached
+
+  const canvas = document.createElement('canvas')
+  canvas.width = size
+  canvas.height = size
+  const ctx = canvas.getContext('2d')!
+  ctx.fillStyle = hashColor(author)
+  ctx.fillRect(0, 0, size, size)
+  ctx.fillStyle = '#ffffff'
+  ctx.font = `bold ${size * 0.45}px sans-serif`
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText(author.charAt(0).toUpperCase(), size / 2, size / 2)
+  const dataUrl = canvas.toDataURL('image/png')
+  initialAvatarCache.set(author, dataUrl)
+  return dataUrl
+}
+
 /**
  * useGithubAvatar — returns GitHub avatar URL using the `.png` trick
  * (https://github.com/{username}.png) which avoids API calls and rate limits.

@@ -11,6 +11,7 @@ const navItems = [
   { to: '/leaderboard', label: 'Xếp hạng', icon: 'lucide:trophy' },
   { to: '/bookmarks', label: 'Yêu thích', icon: 'lucide:heart' },
   { to: '/members', label: 'Thành viên', icon: 'lucide:users' },
+  { to: '/contributors', label: 'Cộng đồng', icon: 'lucide:globe' },
 ]
 
 watch(

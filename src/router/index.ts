@@ -23,6 +23,7 @@ const LeaderboardPage = () => import('@/views/LeaderboardPage.vue')
 const BookmarksPage = () => import('@/views/BookmarksPage.vue')
 const AuthorPage = () => import('@/views/AuthorPage.vue')
 const MembersPage = () => import('@/views/MembersPage.vue')
+const ContributorsPage = () => import('@/views/ContributorsPage.vue')
 const CategoryPage = () => import('@/views/CategoryPage.vue')
 const NotFound = () => import('@/views/NotFound.vue')
 
@@ -95,6 +96,16 @@ const router = createRouter({
       meta: {
         title: 'Thành viên - vibe.j2team.org',
         description: 'Danh sách tất cả thành viên đóng góp trên vibe.j2team.org.',
+      },
+    },
+    {
+      path: '/contributors',
+      name: 'contributors',
+      component: ContributorsPage,
+      meta: {
+        title: 'Cộng đồng đóng góp - vibe.j2team.org',
+        description:
+          'Khám phá cộng đồng những người đóng góp trên vibe.j2team.org qua không gian 3D.',
       },
     },
     {
