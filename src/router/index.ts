@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import { pages, pageComponents } from '@/data/pages-loader'
+import { useRecentlyViewedStore } from '@/stores/useRecentlyViewedStore'
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -126,6 +127,12 @@ export function handleChunkError(error: Error, to: { fullPath: string }) {
   // Full page reload to get fresh assets after new deployment
   window.location.href = to.fullPath
 }
+
+router.afterEach((to) => {
+  const pagePath = to.meta.pagePath
+  if (typeof pagePath !== 'string') return
+  useRecentlyViewedStore().addVisit(pagePath)
+})
 
 router.onError((error, to) => {
   if (!to) return

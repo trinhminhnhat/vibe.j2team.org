@@ -8,9 +8,9 @@ import type { PageInfo } from '@/types/page'
 import { padIndex } from '@/data/homepage'
 import { categories, type CategoryId } from '@/data/categories'
 import FavoriteButton from '@/components/FavoriteButton.vue'
-import { useFavorites } from '@/composables/useFavorites'
+import { useFavoritesStore } from '@/stores/useFavoritesStore'
 
-const { isFavorite } = useFavorites()
+const { isFavorite } = useFavoritesStore()
 
 // Single shared IntersectionObserver for all v-animate elements (instead of one per card)
 const sharedObserver = new IntersectionObserver(

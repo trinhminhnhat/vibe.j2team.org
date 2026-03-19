@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { storeToRefs } from 'pinia'
 import { Icon } from '@iconify/vue'
-import { pages } from '@/data/pages-loader'
-import { useFavorites } from '@/composables/useFavorites'
+import { pageByPath } from '@/data/pages-loader'
+import { useFavoritesStore } from '@/stores/useFavoritesStore'
+import { useRecentlyViewedStore } from '@/stores/useRecentlyViewedStore'
 import { useDraggable } from '@/composables/useDraggable'
 import FavoriteButton from '@/components/FavoriteButton.vue'
+import PageCard from '@/components/PageCard.vue'
 
-const { favoritePaths } = useFavorites()
+const favoritesStore = useFavoritesStore()
+const { favoritePaths } = storeToRefs(favoritesStore)
+const recentlyViewedStore = useRecentlyViewedStore()
+const { recentPages } = storeToRefs(recentlyViewedStore)
+const { clearHistory } = recentlyViewedStore
 const { dragIndex, overIndex, onDragStart, onDragOver, onDrop, onDragEnd } =
   useDraggable(favoritePaths)
 
@@ -16,8 +23,6 @@ const isReordering = ref(false)
 function toggleReorder() {
   isReordering.value = !isReordering.value
 }
-
-const pageByPath = new Map(pages.map((p) => [p.path, p]))
 
 const bookmarkedPages = computed(() => {
   return favoritePaths.value.flatMap((path) => {
@@ -170,6 +175,39 @@ const bookmarkedPages = computed(() => {
         >
           Khám phá ứng dụng
         </RouterLink>
+      </div>
+
+      <!-- Recently viewed -->
+      <div v-if="recentPages.length > 0" class="mt-16">
+        <div class="flex items-center justify-between mb-5">
+          <h2
+            class="font-display text-xl sm:text-2xl font-semibold text-text-primary flex items-center gap-3"
+          >
+            <span class="text-accent-coral font-display text-sm tracking-widest">//</span>
+            Xem gần đây
+            <span
+              class="ml-1 inline-flex items-center justify-center rounded-full bg-accent-coral/10 px-3 py-0.5 text-sm font-medium text-accent-coral"
+            >
+              {{ recentPages.length }}
+            </span>
+          </h2>
+          <button
+            class="flex items-center gap-1.5 text-xs font-display tracking-wide text-text-dim hover:text-accent-coral transition-colors duration-200"
+            @click="clearHistory"
+          >
+            <Icon icon="lucide:trash-2" class="w-3.5 h-3.5" />
+            Xóa lịch sử
+          </button>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <PageCard
+            v-for="page in recentPages"
+            :key="page.path"
+            :page="page"
+            always-visible-favorite
+          />
+        </div>
       </div>
 
       <!-- Back to home -->

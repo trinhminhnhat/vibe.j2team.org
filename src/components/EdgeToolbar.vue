@@ -5,7 +5,7 @@ import { useClipboard, useShare, useTimeoutFn } from '@vueuse/core'
 import { Icon } from '@iconify/vue'
 import { REPO_URL } from '@/data/constants'
 import { pages } from '@/data/pages-loader'
-import { useFavorites } from '@/composables/useFavorites'
+import { useFavoritesStore } from '@/stores/useFavoritesStore'
 
 const GiscusModal = defineAsyncComponent(() => import('@/components/GiscusModal.vue'))
 
@@ -15,7 +15,7 @@ const props = defineProps<{
 
 const route = useRoute()
 const router = useRouter()
-const { toggleFavorite, isFavorite } = useFavorites()
+const { toggleFavorite, isFavorite } = useFavoritesStore()
 
 const isDismissed = ref(false)
 const isOpen = ref(false)

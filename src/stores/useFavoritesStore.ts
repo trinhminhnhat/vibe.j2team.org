@@ -1,10 +1,11 @@
 import { computed } from 'vue'
+import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
 
-const favoritePaths = useLocalStorage<string[]>('vibe-favorites', [])
-const favoriteSet = computed(() => new Set(favoritePaths.value))
+export const useFavoritesStore = defineStore('favorites', () => {
+  const favoritePaths = useLocalStorage<string[]>('vibe-favorites', [])
+  const favoriteSet = computed(() => new Set(favoritePaths.value))
 
-export function useFavorites() {
   function toggleFavorite(path: string) {
     const index = favoritePaths.value.indexOf(path)
     if (index === -1) {
@@ -19,4 +20,4 @@ export function useFavorites() {
   }
 
   return { favoritePaths, toggleFavorite, isFavorite }
-}
+})
